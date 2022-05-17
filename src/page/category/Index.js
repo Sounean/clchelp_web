@@ -18,17 +18,26 @@ export default class Index extends React.Component {
         //     "categoryName": "热门",
         //     "createTime": "2022-09-10 15:53:48"
         this.columns = [
+            // {
+            //     title: '商品ID',
+            //     dataIndex: 'categoryId',
+            //     width: '20%'
+            // }
+            // , {
+            //     title: '类别名称',
+            //     dataIndex: 'categoryName'
+            // }
             {
-                title: '商品ID',
+                title: '传感器ID',
                 dataIndex: 'categoryId',
                 width: '20%'
             }
             , {
-                title: '类别名称',
+                title: '传感器类别',
                 dataIndex: 'categoryName'
             }
             , {
-                title: '创建时间',
+                title: '添加时间',
                 dataIndex: 'createTime'
             },
             {

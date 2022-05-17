@@ -45,7 +45,7 @@ class App extends React.Component {
                             <Route path="/config-add" component={ConfigAdd}/>
                         </Switch>
                     </Content>
-                    <Footer className='App-footer'>社区预警与社交系统 ©2022 Created by
+                    <Footer className='App-footer'>社区预警与社交后台系统 ©2022 Created by
                         <a href='https://github.com/Sounean'> 2020b32037王嘉涌</a>
                     </Footer>
                 </Layout>

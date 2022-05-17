@@ -64,7 +64,8 @@ class Index extends React.Component {
                 {MENUS.home.title}
             </Menu.Item>
             <SubMenu key='category'
-                     title='类别管理'
+                     //title='类别管理'
+                    title='传感器管理'
                      icon={<ProjectOutlined/>}
             >
                 <Menu.Item key={MENUS.category.key} icon={<AppstoreAddOutlined/>}>

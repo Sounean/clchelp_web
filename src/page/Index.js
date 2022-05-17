@@ -2,7 +2,12 @@ import React from 'react';
 import './Index.less'
 import api from '../service'
 import {Button} from 'antd'
+import { Layout, Menu } from 'antd';
+import imgUrl from "./img/web_home_content01.jpg"
 
+/*
+* 作为首页
+* */
 export default class Index extends React.Component {
     state = {
         result: {}
@@ -20,13 +25,19 @@ export default class Index extends React.Component {
     };
 
     render() {
-        const {result} = this.state;
+        const {result} = this.state;    // 去除result
+        const { Header, Content, Footer, Sider } = Layout;
         return <div className='home'>
-            Home
+            {/*Home
             <Button onClick={this.fire}>test API</Button>
             <div>
                 Result:{JSON.stringify(result)}
-            </div>
+            </div>*/}
+            <Content style={{ margin: '10px 0px 0' }}>
+                <div className="site-layout-background" style={{  minHeight: 360 }}>
+                    <img src={ imgUrl }/>
+                </div>
+            </Content>
         </div>
     }
 

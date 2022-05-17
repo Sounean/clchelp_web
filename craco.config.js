@@ -1,4 +1,4 @@
-/*craco.config.js*/
+/*craco.config.js 通过craco来对create-react-app进行修改默认配置*/
 const CracoLessPlugin = require('craco-less');
 module.exports = {
     plugins: [
@@ -7,7 +7,7 @@ module.exports = {
             options: {
                 lessLoaderOptions: {
                     lessOptions: {
-                        modifyVars: {"@primary-color": "#39bfc2"},
+                        modifyVars: {"@primary-color": "#24B06C"},  // 修改主题色，
                         javascriptEnabled: true
                     }
                 }

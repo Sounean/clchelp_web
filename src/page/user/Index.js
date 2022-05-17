@@ -3,7 +3,7 @@ import {Table, Switch, Popconfirm} from 'antd';
 import './Index.less'
 import api from '../../service'
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 8;
 export default class Index extends React.Component {
     state = {
         data: [],
@@ -13,36 +13,36 @@ export default class Index extends React.Component {
 
     constructor(props) {
         super(props);
-        // {"uid":"1","imoocId":"111","orderId":"222","userName":"Rose","forbid":"1"}
+        // {"uid":"1","cshId":"A615","userName":"王一一","createTime":"2022-05-25 17:10:03","forbid":"0"}
         this.columns = [
             {
                 title: 'uid',
                 dataIndex: 'uid'
             },
             {
-                title: "imoocId",
-                dataIndex: 'imoocId'
+                title: "房间号",
+                dataIndex: 'cshId'
             },
             {
                 title: '用户名',
                 dataIndex: "userName"
             },
             {
-                title: "创建时间",
+                title: "入户时间",
                 dataIndex: 'createTime'
             },
             {
-                title: "forbid",
+                title: "是否冻结",
                 dataIndex: 'forbid',
                 render: (text, record) => {
-                    return <Popconfirm
+                    return <Popconfirm  // 气泡确认
                         title={`确定要${record.forbid === '1' ? '解禁' : '冻结'}?`}
-                        onConfirm={() => this.toggleForbid(record)}
+                        onConfirm={() => this.toggleForbid(record)} // 用户点击调用方法
                     >
                         <Switch
-                            checkedChildren="正常"
+                            checkedChildren="正常"    //选中状态显示
                             unCheckedChildren="冻结"
-                            checked={text !== "1"}
+                            checked={text !== "1"}  // 判断是否被选中
                         />
                     </Popconfirm>
                 },
@@ -56,13 +56,13 @@ export default class Index extends React.Component {
         return (
             <Table
                 loading={loading}
-                rowKey={item => item.uid}
+                rowKey={item => item.uid}   //每一行的唯一值
                 dataSource={data}
-                pagination={
+                pagination={    // 分页的数据
                     {
                         total,
                         pageSize: PAGE_SIZE,
-                        onChange: (page, pageSize) => {
+                        onChange: (page, pageSize) => { //页码变化时
                             console.log(page, pageSize);
                             this.loadData(page);
                         }
