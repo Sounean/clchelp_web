@@ -2,6 +2,7 @@ import {url} from './api'
 import {userList, updateUser} from './user';
 import {categoryList, removeCategory, addCategory} from './category';
 import {getConfig,updateConfig} from './config'
+import {newsList} from './news'
 
 export default {
     userList,
@@ -10,7 +11,8 @@ export default {
     removeCategory,
     addCategory,
     getConfig,
-    updateConfig: updateConfig
+    updateConfig: updateConfig,
+    newsList
 };
 const AUTH_TOKEN = 'MTU5Mjg1MDg3NDcwNw==';
 

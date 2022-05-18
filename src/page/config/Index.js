@@ -84,18 +84,18 @@ export default class Index extends React.Component {
             ...this.getColumnSearchProps('id')
         },
         {
-            title: 'namespace',
-            dataIndex: 'namespace',
-            key: 'namespace',
+            title: '新闻标题',
+            dataIndex: 'title',
+            key: 'title',
             width: "20%",
-            ...this.getColumnSearchProps('namespace')
+            ...this.getColumnSearchProps('title')
         },
         {
-            title: 'version',
-            dataIndex: 'version',
-            key: 'version',
+            title: '新闻内容',
+            dataIndex: 'content',
+            key: 'content',
             width: '20%',
-            ...this.getColumnSearchProps('version')
+            ...this.getColumnSearchProps('content')
         },
         {
             title: '发布时间',
@@ -143,7 +143,7 @@ export default class Index extends React.Component {
     };
 
 
-    loadData(pageIndex) {
+    /*loadData(pageIndex) { // 原先的代码
         this.pageIndex = pageIndex;
         api.getConfig({pageIndex, pageSize: PAGE_SIZE})
             .then(response => response.json())
@@ -161,7 +161,27 @@ export default class Index extends React.Component {
                     loading: false,
                 })
             });
+    }*/
+    loadData(pageIndex) {
+        this.pageIndex = pageIndex;
+        api.newsList({pageIndex, pageSize: PAGE_SIZE})
+            .then(res => res.json())
+            .then(result => {
+                const {data: {list, total} = {}} = result;
+                this.setState({
+                    list: list,
+                    total: total,
+                    loading: false
+                })
+            })
+            .catch(e => {
+                console.log(e);
+                this.setState({
+                    loading: false,
+                })
+            });
     }
+
 
     render() {
         const {list, total, loading} = this.state;

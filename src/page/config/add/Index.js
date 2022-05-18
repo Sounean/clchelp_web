@@ -59,7 +59,14 @@ export default class Index extends React.Component {
         if (!this.namespace) {
             this.setState({
                 visibleAlert: true,
-                errorMsg: 'namespace不能为空'
+                errorMsg: '标题不能为空'
+            });
+            return;
+        }
+        if (!this.jsonUrl) {
+            this.setState({
+                visibleAlert: true,
+                errorMsg: '新闻不能为空'
             });
             return;
         }
@@ -128,13 +135,13 @@ export default class Index extends React.Component {
         return <div className='config-add'>
             <div className='config-add-left'>
                 <div className='config-add-top'>
-                    <div>namespace：</div>
+                    <div>title：</div>
                     <TextArea
                         onChange={({target: {value}}) => {
                             this.namespace = value;
                         }}
                         defaultValue={this.namespace}
-                        placeholder='请输入...'
+                        placeholder='官方事件标题格式：时间+事件 例：4.13 官方购物群'
                         autoSize={{maxRows: 1}}
                         disabled={this.namespace != null}
                     />
@@ -149,7 +156,11 @@ export default class Index extends React.Component {
                             submit
                         })
                     }}
-                    placeholder='请输入...'
+                    placeholder={ '简述此次事件：（格式：具体事件,官方群号为：(群id)）'
+                        + String.fromCharCode(10)
+                        + '例：因本次疫情实施硬隔离，出门名额有限。出现不少不法分子假冒社区管理人员建购物群骗取钱财。现组建官方群来解决各住户生活所需，'
+                        + String.fromCharCode(10)
+                        + '       官方群号为:181705683042305'}
                     autoSize={{minRows: 6, maxRows: 16}}
                 />
                 <div className='config-add-btn'>

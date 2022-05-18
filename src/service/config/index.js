@@ -8,3 +8,4 @@ export function getConfig(params) {
 export function updateConfig(params) {
     return put(api.api.config)(params);
 }
+

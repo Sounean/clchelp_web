@@ -36,7 +36,7 @@ class App extends React.Component {
                         this.setState({collapsed});
                     }}/>
                     <Content className='App-content'>
-                        <Switch>
+                        <Switch>    // 以下不同的
                             <Route exact path="/" component={Home}/>
                             <Route path="/category" component={Category}/>
                             <Route path="/category-add" component={AddCategory}/>
