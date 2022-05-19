@@ -27,15 +27,15 @@ export default class Index extends React.Component {
             <div style={{padding: 8}}>
                 <Input
                     ref={node => this.searchInput = node}
-                    placeholder={`搜索 ${dataIndex}`}
+                    placeholder={`搜索 ${dataIndex}`} // 将我们要搜索的值赋给dataIndex
                     value={selectedKeys[0]}
                     onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+                    onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}// 在那一列就对那一列进行dataIndex的搜索
                     style={{width: 188, marginBottom: 8, display: 'block'}}
                 />
                 <Button
                     type='primary'
-                    onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+                    onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)} // 传入这列的值，要搜索的值进行搜索
                     icon={<SearchOutlined/>}
                     size='small'
                     style={{width: 90, marginRight: 8}}
@@ -45,7 +45,7 @@ export default class Index extends React.Component {
                 <Button
                     size='small'
                     style={{width: 90}}
-                    onClick={() => this.handleReset(clearFilters)}
+                    onClick={() => this.handleReset(clearFilters)}// 先清除搜索的值，对所有数据重新加载一遍
                 >
                     重置
                 </Button>

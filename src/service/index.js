@@ -16,6 +16,7 @@ export default {
 };
 const AUTH_TOKEN = 'MTU5Mjg1MDg3NDcwNw==';
 
+/*把传进来的api（即path和url进行拼接，最后再heard里去加上params）*/
 export function get(api) {
     return params => fetch(buildParams(url + api, params),
         {
@@ -58,6 +59,7 @@ export function del(api) {
 export function post(api) {
     /**
      * 第一个参数作为body参数，第二个参数作为URL path或者查询参数
+     * fetch函数内表示方法是post，body是json数据，headrs是加了验证的
      */
     return params => {
         return queryParams => fetch(buildParams(url + api, queryParams),

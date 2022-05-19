@@ -16,8 +16,8 @@ export default class Index extends React.Component {
         // {"uid":"1","cshId":"A615","userName":"王一一","createTime":"2022-05-25 17:10:03","forbid":"0"}
         this.columns = [
             {
-                title: 'uid',
-                dataIndex: 'uid'
+                title: 'uid',   // 表示表格中的标题
+                dataIndex: 'uid'    // 表示获取的data解析出来的list的中每个对象中的属性
             },
             {
                 title: "房间号",
@@ -83,12 +83,13 @@ export default class Index extends React.Component {
 
     loadData = (pageIndex) => {
         this.pageIndex = pageIndex;
-        api.userList({pageIndex, pageSize: PAGE_SIZE})
+        api.userList({pageIndex, pageSize: PAGE_SIZE})  //表示希望获取多少个数据（从多少到多少）
             .then(res => res.json())
             .then(result => {
                 // {"code":0,"message":"SUCCESS.","data":{"total":3,"list":[{"u
+                //上行注释是从后台返回的response，我们对response进行解读，知道应该有哪些值被获取
                 const {code, message, data: {list, total} = {}} = result;
-                this.setState({
+                this.setState({ // 将数值传递出去，供页面解析
                     loading: false,
                     data: list,
                     total: total
@@ -102,11 +103,11 @@ export default class Index extends React.Component {
             })
     };
     toggleForbid = (record) => {
-        const forbid = record.forbid === '1' ? 0 : 1;
-        api.updateUser({forbid})(record.uid)
+        const forbid = record.forbid === '1' ? 0 : 1;   // 判断当前是多少，取相反的值
+        api.updateUser({forbid})(record.uid) // 通过service层提供的函数取修改用户“forbid”
             .then(res => res.json())
             .then(result => {
-                this.loadData(this.pageIndex);
+                this.loadData(this.pageIndex);// 重新刷新页面
             }).catch(e => {
             console.log(e);
         });
